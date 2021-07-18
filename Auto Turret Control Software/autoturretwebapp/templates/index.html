@@ -1,0 +1,38 @@
+{% extends "basepage.html" %}
+
+{% block content %}
+{{super()}}
+<div class="container">
+   <div class="card border-primary mb-3">
+      <h5 class="card-header">Water Auto Turret Status</h5>
+      <div class="card-body">
+         <h6 class="card-text">Max Ranges:</h6>
+      </div>
+      <div class="table-responsive">
+         <table class="table">
+            <thead class="thead-light">
+               <tr>
+                  <th scope="col">Yaw Left</th>
+                  <th scope="col">Yaw Right</th>
+                  <th scope="col">Pitch Left</th>
+                  <th scope="col">Pitch Right</th>
+               </tr>
+            </thead>
+            <tbody>
+               <tr>
+                  <td id="slot_1_current">{{ yaw_left_max }}</td>
+                  <td id="slot_2_current">{{ yaw_right_max }}</td>
+                  <td id="slot_3_current">{{ pitch_left_max }}</td>
+                  <td id="slot_4_current">{{ pitch_right_max }}</td>
+               </tr>
+            </tbody>
+         </table>
+      </div>
+   </div>
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+{{super()}}
+{% endblock %}

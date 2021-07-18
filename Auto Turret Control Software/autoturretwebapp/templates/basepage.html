@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Water Auto Turret
+{% endblock %}
+
+{% block navbar %}
+{% from 'bootstrap/nav.html' import render_nav_item %}
+    <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="{{ url_for('index') }}">Water Auto Turret</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basepage-navbar-collapse" aria-controls="basepage-navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+  
+            <div class="collapse navbar-collapse" id="basepage-navbar-collapse">
+                <ul class="navbar-nav mr-auto">
+                    {{ render_nav_item('index', 'Home') }}
+                </ul>
+            </div>
+        </nav>
+    </div>
+
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+            <div class="alert alert-info" role="alert">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+        {% endwith %}
+
+        {# application content needs to be provided in the app_content block #}
+        {% block app_content %}{% endblock %}
+    </div>
+{% endblock %}

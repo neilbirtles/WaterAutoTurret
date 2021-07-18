@@ -31,6 +31,8 @@ def print_debug_info():
     print("Yaw Latest SPI Info: " + str(bin(yaw_motor.current_SPI_status)))
     print("Pitch Driver Status: " + str(bin(pitch_motor.DRV_STATUS)))
     print("Pitch Latest SPI Info: " + str(bin(pitch_motor.current_SPI_status)))
+    print("Yaw TSTEP: " + str(yaw_motor.TSTEP))
+    print("Pitch TSTEP: " + str(pitch_motor.TSTEP))
 
 error = False
 

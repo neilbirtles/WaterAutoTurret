@@ -1,4 +1,4 @@
-from DRV8806_driver import DRV8806_Driver
+from .DRV8806_driver import DRV8806_Driver
 from time import sleep
 
 #  +------+-----+----------+------+---+----+---- Model  Khadas VIM3 --+----+---+------+----------+-----+------+

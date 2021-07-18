@@ -113,6 +113,7 @@ class TMC5160_driver:
         self.__DMAX = 70
         self.__D1 = 100
         self.__VSTOP = 100
+        self.__COOLCONF = 0
         
         #tracks the homing status
         self.__homed = False
@@ -258,11 +259,11 @@ class TMC5160_driver:
                 "Print moving to limit sw..."
                 print("Latched Pos: " + str(self.latched_position))
                 print("Current Pos: " + str(self.current_position))
-            sleep(0.1)
+            sleep(0.5)
 
         while self.current_velocity != 0:
             if DEBUG: print("waiting for zero velocity")
-            sleep(0.1)
+            sleep(0.5)
         
         if DEBUG: 
             print("Latched Pos: " + str(self.latched_position))
@@ -301,11 +302,11 @@ class TMC5160_driver:
                 "Print moving to limit sw..."
                 print("Latched Pos: " + str(self.latched_position))
                 print("Current Pos: " + str(self.current_position))
-            sleep(0.1)
+            sleep(0.5)
 
         while self.current_velocity != 0:
             if DEBUG: print("waiting for zero velocity")
-            sleep(0.1)
+            sleep(0.5)
         
         if DEBUG: 
             print("Latched Pos: " + str(self.latched_position))
@@ -330,14 +331,17 @@ class TMC5160_driver:
         print("Max Left Steps: " + str(self.__max_left_steps))
         print("Max Right Steps: " + str(self.__max_right_steps))
 
-        #set a zero at the right hand switch point
-        self.set_hold_mode()
-        self.XACTUAL = 0
-        self.XTARGET = 0
-        
+        self.XTARGET = self.XACTUAL
+        # while self.current_velocity != 0:
+        #     print("waiting for zero velocity")
+        #     sleep(0.1)
+
+        #put VMAX back to what it was before homing
+        self.VMAX = original_vmax
+        sleep(0.5)
         #go to the newly calculated midpoint
         print("Going to new midpoint...")
-        self.go_to_position(-1 * self.__max_right_steps)
+        self.go_to_position(self.XACTUAL - self.__max_right_steps)
         
         while not self.position_reached:
             if DEBUG: print("Going to midpoint...")
@@ -353,8 +357,7 @@ class TMC5160_driver:
 
         # disable motor soft stop
         self.soft_stop_enabled = False
-        #put VMAX back to what it was before homing
-        self.VMAX = original_vmax
+       
         # set homing complete 
         self.__homed = True
 
@@ -543,12 +546,45 @@ class TMC5160_driver:
             self.__ihold_delay = value
     
     @property
+    def TSTEP(self):
+        return self.__read_from_TMC5160(TSTEP)
+    
+    @property
+    def TCOOLTHRS(self):
+        return
+
+    @TCOOLTHRS.setter
+    def TCOOLTHRS(self, value):
+        self.__write_to_TMC5160(TCOOLTHRS, value)
+
+    @property
     def CHOPCONF(self):
         return self.__read_from_TMC5160(CHOPCONF)
     
     @CHOPCONF.setter
     def CHOPCONF(self, value):
         self.__write_to_TMC5160(CHOPCONF, value)
+
+    @property
+    def stallguard_threshold_value(self):
+        #threshold values are in bits 16-22 of COOLCONF
+        #so mask off rest of register and shift down 16 bits to give value
+        return (self.__COOLCONF & 0x7F0000) >> 16
+
+    @stallguard_threshold_value.setter
+    def stallguard_threshold_value(self, value):
+        #TODO allow values to -64, needs twos compliment conversion to put 
+        #into register
+        if value >= 0 and value < 63:
+            #blank out bits 16-22 to 0, 25 used bits in register
+            new_coolconf = self.__COOLCONF & 0x180FFF
+            #shift value up to bits 16-22
+            value = value << 16
+            #OR together for new value
+            new_coolconf = new_coolconf | value
+            #write it to the chip and save it
+            self.__write_to_TMC5160(COOLCONF,new_coolconf)
+            self.__COOLCONF = new_coolconf
 
     @property
     def LOST_STEPS(self):
@@ -720,6 +756,7 @@ class TMC5160_driver:
     
     @VMAX.setter
     def VMAX(self, value):
+        self.__VMAX = value
         self.__write_to_TMC5160(VMAX, value)
     
     @property
@@ -757,9 +794,6 @@ class TMC5160_driver:
     @property
     def RAMPSTAT(self):
         return self.__read_from_TMC5160(RAMPSTAT)
-
-    def curr_test(self):
-        self.__write_to_TMC5160(IHOLD_IRUN, 0x1F10)
     
     @property
     def position_reached(self):
