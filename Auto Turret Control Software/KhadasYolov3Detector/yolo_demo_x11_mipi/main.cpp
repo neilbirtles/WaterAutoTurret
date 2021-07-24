@@ -156,23 +156,28 @@ static void check_for_client_conn(void){
     }
     else
     {
-      char msg[] = "{joinmessage:'0'}";
-    //   printf("Got a connection; writing 'hello'.\n");
-      send(client_socket_fd, msg, sizeof(msg), 0);
+    //   char msg[] = "{\"joinmessage\":\"0\",\"img_height\":\"localhost\"}";
+    // //   printf("Got a connection; writing 'hello'.\n");
+    //   send(client_socket_fd, msg, sizeof(msg), 0);
       client_sockets[0] = client_socket_fd;
-      //close(client_socket_fd);
+      
+      int length = snprintf( NULL, 0, "{\"joinmessage\":\"0\",\"image_height\":\"%d\",\"image_width\":\"%d\"}", height, width);
+	  char* msg = (char*)malloc( length + 1 );
+	  snprintf( msg, length + 1,  "{\"joinmessage\":\"0\",\"image_height\":\"%d\",\"image_width\":\"%d\"}", height, width);
+	  send(client_sockets[0], msg, strlen(msg), 0);
+	  free(msg);
     }
 }
 
-static cv::Scalar obj_id_to_color(int obj_id) {
+// static cv::Scalar obj_id_to_color(int obj_id) {
 
-	int const colors[6][3] = { { 1,0,1 },{ 0,0,1 },{ 0,1,1 },{ 0,1,0 },{ 1,1,0 },{ 1,0,0 } };
-	int const offset = obj_id * 123457 % 6;
-	int const color_scale = 150 + (obj_id * 123457) % 100;
-	cv::Scalar color(colors[offset][0], colors[offset][1], colors[offset][2]);
-	color *= color_scale;
-	return color;
-}
+// 	int const colors[6][3] = { { 1,0,1 },{ 0,0,1 },{ 0,1,1 },{ 0,1,0 },{ 1,1,0 },{ 1,0,0 } };
+// 	int const offset = obj_id * 123457 % 6;
+// 	int const color_scale = 150 + (obj_id * 123457) % 100;
+// 	cv::Scalar color(colors[offset][0], colors[offset][1], colors[offset][2]);
+// 	color *= color_scale;
+// 	return color;
+// }
 
 
 static void draw_results(cv::Mat& frame, DetectResult resultData, int img_width, int img_height, det_model_type type){
@@ -189,13 +194,13 @@ static void draw_results(cv::Mat& frame, DetectResult resultData, int img_width,
 		char* name = resultData.result_name[i].lable_name;
 		int id = resultData.result_name[i].lable_id;
 		
-		//cout << "i:" <<resultData.detect_num <<" name:" << name <<" left:" << left <<" right:" << right << " top:" << top << " bottom:" << bottom <<endl;
+		//cout << "i:" <<resultData.detect_num <<" name:" << name <<" left:" << resultData.point[i].point.rectPoint.left <<" right:" << right << " top:" << top << " bottom:" << bottom << " wid:" << img_width << " hgt:" << img_height << endl;
 		if (client_sockets[0] != 0)
         {       
             // printf("Sending next message...\n");
-            int length = snprintf( NULL, 0, "{detectid:'%d',labelname:'%s',left:'%f',right:'%f',top:'%f',bottom:'%f'}", id, name, left, right, top, bottom );
-            char* msg = (char*)malloc( length + 5 );
-            snprintf( msg, length + 5,  "{detectid:'%d',labelname:'%s',left:'%f',right:'%f',top:'%f',bottom:'%f'}", id, name, left, right, top, bottom );
+            int length = snprintf( NULL, 0, "{\"detectid\":\"%d\",\"labelname\":\"%s\",\"left\":\"%f\",\"right\":\"%f\",\"top\":\"%f\",\"bottom\":\"%f\"}", id, name, left, right, top, bottom );
+            char* msg = (char*)malloc( length + 1 );
+            snprintf( msg, length + 1,  "{\"detectid\":\"%d\",\"labelname\":\"%s\",\"left\":\"%f\",\"right\":\"%f\",\"top\":\"%f\",\"bottom\":\"%f\"}", id, name, left, right, top, bottom );
             send(client_sockets[0], msg, strlen(msg), 0);
             free(msg);
         }
@@ -365,7 +370,7 @@ out:
 int main(int argc, char** argv){
 
 	int c;
-	int i=0,ret=0;
+	int i=0;//,ret=0;
 	pthread_t tid[2];
 
 	while ((c = getopt_long(argc, argv, "d:w:h:m:H", longopts, NULL)) != -1) {
