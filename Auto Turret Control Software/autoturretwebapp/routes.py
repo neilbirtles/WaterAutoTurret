@@ -7,8 +7,8 @@ from flask import Response
 from flask import flash, url_for, redirect
 from werkzeug.utils import secure_filename
 from flask import current_app as app
-# from .motors import pitch_motor
-# from .motors import yaw_motor
+from .motors import pitch_motor
+from .motors import yaw_motor
 import random
 import string
 import sys

@@ -3,9 +3,10 @@ import json
 
 DEBUG=True
 
-def yolo_model_interface(queue, event, modelparams):
+def yolo_model_interface(queue, event, modelparams, ip, port):
     #yolo model detection server runs on the same machine on port 4141
-    yolo_server_address = ('localhost', 4141)
+    #yolo_server_address = ('localhost', 4141)
+    yolo_server_address = (ip, port)
 
     # Create a TCP/IP socket
     sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)

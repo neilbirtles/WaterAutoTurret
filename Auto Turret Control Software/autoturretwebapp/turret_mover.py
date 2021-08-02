@@ -33,12 +33,23 @@ def turret_mover(queue, event, modelparams, yaw_motor, pitch_motor):
                     print("Detection pitch target" + str(detection_pitch_target))
 
                 #translate to target positions and see if outside movement threshold - if they are then move to them 
+                #yaw move
                 yaw_step_target = -1 * (detection_yaw_target + yaw_motor.max_left_steps)
                 if DEBUG:
-                    print("Current Target: " + str(yaw_motor.current_target))
-                    print("New Target: " + str(yaw_step_target))
+                    print("Current Yaw Target: " + str(yaw_motor.current_target))
+                    print("New Yaw Target: " + str(yaw_step_target))
                 if yaw_step_target < yaw_motor.current_target - modelparams.det_move_threshold_yaw or yaw_step_target > yaw_motor.current_target + modelparams.det_move_threshold_yaw:
                     if DEBUG: print("got a yaw move")
                     yaw_motor.go_to_position(yaw_step_target)
                 else:
                     if DEBUG: print("yaw move under movement threshold")
+                #pitch move
+                pitch_step_target = -1 * (detection_pitch_target + pitch_motor.max_left_steps)
+                if DEBUG:
+                    print("Current Pitch Target: " + str(pitch_motor.current_target))
+                    print("New Pitch Target: " + str(pitch_step_target))
+                if pitch_step_target < pitch_motor.current_target - modelparams.det_move_threshold_pitch or pitch_step_target > pitch_motor.current_target + modelparams.det_move_threshold_pitch:
+                    if DEBUG: print("got a pitch move")
+                    pitch_motor.go_to_position(pitch_step_target)
+                else:
+                    if DEBUG: print("pitch move under movement threshold")
