@@ -16,7 +16,7 @@ class yaw_motor(TMC5160_driver):
         self.GSCALE = 2
         #set the currents up
         self.hold_current = 16
-        self.run_current = 20
+        self.run_current = 28
         self.hold_current_delay = 5
 
         # MULTISTEP_FILT = 1, EN_PWM_MODE = 1 enables stealthChop
