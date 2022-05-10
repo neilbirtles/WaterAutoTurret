@@ -1,7 +1,7 @@
 # Water Auto Turret
 Welcome to the home of the Water Auto Turret! This project was borne out of the desire to use one of my excellent Khadas VIM3 SBC for something other than crypto currency mining and to provide an excellent (if I do say so myself!) toy for my daughter and her friends during the summer months. I’ve used the VIM3 to create large crypto mining clusters so I knew they were high performance, well supported and well documented SBCs. One specific feature that I hadn’t used before was the Neural Processing Unit (NPU) and so this project was born to give a real world application to test this feature out. 
 
-![Water Auto Turret Overall Picture](./docs/assets/images/FullTurretIntroPic.jpg)
+![Water Auto Turret Overall Picture](./assets/images/FullTurretIntroPic.jpg)
 
 The intention when designing and building this water turret was to minimise the custom design aspects and use off the shelf components (both hardware and software) as far as possible. This didn't always work out as there ended up being lots of custom 3D printed items, custom extrusions and software however all of these aspects were made significantly easier due to the following companies I sourced parts and software from - I highly recommend them for any similar projects and work!:
 * Khadas - OEM of the VIM3, fan, heatsink and the OS08A10 camera used in the project. They also provide excellent support for their products with full 3D CAD models available making the design of 3D printed parts that incorporate them a breeze, great documentation, great supporting software from operating systems to code to access the NPU (including via Python!) and a great forum with lots of community support - https://www.khadas.com/ 
@@ -13,7 +13,7 @@ The Water Auto Turret has been built from black anodised extrusions, Lipstick Re
 
 The block diagram for the Water Auto Turret can be found below.
 
-![Block Diagram of the Water Auto Turret](./docs/assets/images/WaterAutoTurretBlockDiagram.png)
+![Block Diagram of the Water Auto Turret](./assets/images/WaterAutoTurretBlockDiagram.png)
 
 ### Controller
 The heart of the system is the Khadas VIM3 SBC it provides the overall controller interfacing to a camera to provide the vision inputs, running the software for target identification and tracking (see the Software Description) and interfacing to a custom Main Board that provides:
