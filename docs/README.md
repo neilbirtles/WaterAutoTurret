@@ -48,6 +48,6 @@ A complete description, build guide and bill of materials can be found in this r
 Build Guide and Descriptions:
 * [VIM3 Setup](VIM3Setup.md)
 * [Software Description](SoftwareDescription.md)
-* [3D Printed Part](3DPrintedParts.md)
+* [3D Printed Parts](3DPrintedParts.md)
 * [Mechanical Assembly](MechanicalAssembly.md)
 * [Electronics Assembly](ElectronicsAssembly.md)

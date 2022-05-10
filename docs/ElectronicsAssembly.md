@@ -87,3 +87,5 @@ With all the components now wired in the battery can be slid into place in the t
 The Turret Base front panel can now be installed. The {06 Top Front Edge} needs to be put on the top of the front panel and then the front panel can be offered up to the rest of the Turret Base and then can be screwed in with 6 M5x8mm screws through the baseplate. 
 
 That completes the assembly of the Water Auto Turret!
+
+[{Home}](https://github.com/neilbirtles/WaterAutoTurret/blob/main/docs/README.md)

@@ -9,25 +9,27 @@ Finally make sure that it is possible to SSH into the VIM3 over the WiFi connect
 
 ## Software Installation 
 The following steps have to be carried out to install the software for the Water Auto Turret:
-* WiringPi-Python is required for GPIO access this is installed by following the instructions here for Python 3 - https://github.com/khadas/WiringPi-Python#manual-build 
+* WiringPi-Python is required for GPIO access this is installed by following the instructions [here](https://github.com/khadas/WiringPi-Python#manual-build) for Python 3.
 * Clone the GitHub repository for the Water Auto Turret
-`git clone https://github.com/neilbirtles/WaterAutoTurret`
+  * `git clone https://github.com/neilbirtles/WaterAutoTurret`
 * Change to the project directory, create a Python virtual environment with access to the system site packages to pick up WiringPi-Python and activate it
-`cd WaterAutoTurret`
-`python3 -m venv venv --system-site-packages`
-`source venv/bin/activate`
+  * `cd WaterAutoTurret`
+  * `python3 -m venv venv --system-site-packages`
+  * `source venv/bin/activate`
 * Install PIP
-`sudo apt install python3-pip`
+  * `sudo apt install python3-pip`
 * Install all dependencies:
-`pip3 install matplotlib`
-`pip3 install install numpy`
-`wget https://github.com/khadas/ksnn/blob/master/ksnn/ksnn-1.3-py3-none-any.whl`
-`pip3 install ksnn-1.3-py3-none-any.whl`
-`pip3 install Flask`
-`pip3 install Bootstrap-Flask`
-`pip3 install spidev`
+  * `pip3 install matplotlib`
+  * `pip3 install install numpy`
+  * `wget https://github.com/khadas/ksnn/blob/master/ksnn/ksnn-1.3-py3-none-any.whl`
+  * `pip3 install ksnn-1.3-py3-none-any.whl`
+  * `pip3 install Flask`
+  * `pip3 install Bootstrap-Flask`
+  * `pip3 install spidev`
 
 Once everything is installed then the web app can be run using the following command:
-`python3 autoturret.py`
+* `python3 autoturret.py`
 
 The web interface should then be available on the VIM3’s IP address on port 5000, but some errors may be thrown if the other hardware is not available (i.e. this is benign just run on the bare VIM3).
+
+[{Home}](https://github.com/neilbirtles/WaterAutoTurret/blob/main/docs/README.md) [{Next}](https://github.com/neilbirtles/WaterAutoTurret/blob/main/docs/SoftwareDescription.md)

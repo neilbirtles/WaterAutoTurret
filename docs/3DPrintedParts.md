@@ -19,3 +19,5 @@ File names for the stl files link back to body names in the Fusion360 model for 
 * Turret Base::[09 Water and Power Inlet (Supports Needed).stl](https://github.com/neilbirtles/WaterAutoTurret/blob/main/3D%20Printable%20Parts/Turret%20Base/09%20Water%20and%20Power%20Inlet%20(Supports%20Needed).stl) - can either pick supports to build plate only or paint on supports down the both sides to support the parts that slot into the aluminum profiles. 
 
 The use of all the 3D printed parts can be found in the rest of the build guide and also in the Fusion360 model. All the 3D printed parts are stored [here](https://github.com/neilbirtles/WaterAutoTurret/tree/main/3D%20Printable%20Parts)
+
+[{Home}](https://github.com/neilbirtles/WaterAutoTurret/blob/main/docs/README.md) [{Next}](https://github.com/neilbirtles/WaterAutoTurret/blob/main/docs/MechanicalAssembly.md)
