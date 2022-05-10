@@ -1,20 +1,12 @@
 from time import sleep
 from pathlib import Path
 from flask import render_template
-from flask import jsonify
-from flask import request
 from flask import Response
-from flask import flash, url_for, redirect
-from werkzeug.utils import secure_filename
 from flask import current_app as app
 from .motors import pitch_motor
 from .motors import yaw_motor
 from .app_thread_pool import pipeline
 import cv2 as cv
-import random
-import string
-import sys
-import os
 
 DEBUG = False
 
