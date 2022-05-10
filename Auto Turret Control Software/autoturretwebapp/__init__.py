@@ -1,4 +1,3 @@
-import threading
 import atexit
 from flask import Flask
 from flask_bootstrap import Bootstrap
@@ -6,8 +5,6 @@ from .motors import pitch_motor
 from .motors import yaw_motor
 from .solenoids import water_ports
 from .detect_model_params import detect_model_params
-from .yolo_model_interface import yolo_model_interface
-from .turret_mover import turret_mover
 from .turret_controller import turret_controller
 from .app_thread_pool import app_thread_pool_executor
 from .app_thread_pool import event

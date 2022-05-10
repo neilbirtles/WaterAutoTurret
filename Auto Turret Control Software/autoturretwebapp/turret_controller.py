@@ -224,7 +224,7 @@ def get_targets(image, boxes, scores, classes, model_params, yaw_motor, pitch_mo
 		water_ports.turn_off_ports(port_1=False, port_2=False, port_3=False, port_4=False)
 
 def turret_controller(queue, event, modelparams, yaw_motor, pitch_motor, water_ports, model_location, shared_lib_location, video_device, output_img_scale):
-	#https://gitlab.com/khadas/ksnn-examples/-/blob/master/docs/ksnn_user_usage_v0.1.pdf 
+	#https://github.com/khadas/ksnn/blob/master/docs/ksnn_user_usage_v1.3.pdf
 	yolov3 = KSNN('VIM3')
 	print("[turret contoller] Starting Turret Controller Thread")
 	print(f"[turret contoller] KSNN Version: {yolov3.get_nn_version()}")
