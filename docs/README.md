@@ -51,3 +51,7 @@ Build Guide and Descriptions:
 * [3D Printed Parts](3DPrintedParts.md)
 * [Mechanical Assembly](MechanicalAssembly.md)
 * [Electronics Assembly](ElectronicsAssembly.md)
+
+### 3D Models
+
+A complete interactive 3D Model for the Water Auto Turret can be found [here](https://a360.co/3vnJYny) and an export of all the 3D components in both Fusion360 and step file formats can be found here [3D Models](https://github.com/neilbirtles/WaterAutoTurret/tree/main/Fusion360%20Files)
