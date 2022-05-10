@@ -46,9 +46,8 @@ The Water Auto Turret is currently fully functional and capable of identifying, 
 A complete description, build guide and bill of materials can be found in this repository so should be relatively straightforward for anyone that wants to replicate the project. Any questions then please just ask - I am more than willing to help.
 
 Build Guide and Descriptions:
+* [VIM3 Setup](VIM3Setup.md)
 * [Software Description](SoftwareDescription.md)
 * [3D Printed Part](3DPrintedParts.md)
 * [Mechanical Assembly](MechanicalAssembly.md)
 * [Electronics Assembly](ElectronicsAssembly.md)
-* [Wiring](Wiring.md)
-* [Final Assembly](FinalAssembly.md)
