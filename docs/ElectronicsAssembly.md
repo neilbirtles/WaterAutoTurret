@@ -88,4 +88,4 @@ The Turret Base front panel can now be installed. The {06 Top Front Edge} needs 
 
 That completes the assembly of the Water Auto Turret!
 
-[{Home}](https://github.com/neilbirtles/WaterAutoTurret/blob/main/docs/README.md)
+[{Home}](README.md)

@@ -65,4 +65,4 @@ The Water Auto Turret is currently fully functional, however its always possible
 * Improved target tracking using OpenCV for detection at a reduced frame rate and then using the much lighter weight [Dlib for tracking](http://dlib.net/correlation_tracker.py.html) with the aim or providing more frequent updates to the targeting 
 * Improved alignment between objects being tracked and targeting - at the moment this is a linear scale relationship and this doesn't work as well as it could as the target moves away from centre
 
-[{Home}](https://github.com/neilbirtles/WaterAutoTurret/blob/main/docs/README.md) [{Next}](https://github.com/neilbirtles/WaterAutoTurret/blob/main/docs/3DPrintedParts.md)
+[{Home}](README.md) [{Next}](3DPrintedParts.md)

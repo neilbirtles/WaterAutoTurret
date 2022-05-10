@@ -32,4 +32,4 @@ Once everything is installed then the web app can be run using the following com
 
 The web interface should then be available on the VIM3’s IP address on port 5000, but some errors may be thrown if the other hardware is not available (i.e. this is benign just run on the bare VIM3).
 
-[{Home}](https://github.com/neilbirtles/WaterAutoTurret/blob/main/docs/README.md) [{Next}](https://github.com/neilbirtles/WaterAutoTurret/blob/main/docs/SoftwareDescription.md)
+[{Home}](README.md) [{Next}](SoftwareDescription.md)
