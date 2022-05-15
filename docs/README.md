@@ -53,6 +53,7 @@ Build Guide and Descriptions:
 * [3D Printed Parts](3DPrintedParts.md)
 * [Mechanical Assembly](MechanicalAssembly.md)
 * [Electronics Assembly](ElectronicsAssembly.md)
+* [Full Bill of Maerials and Equipment Breakdown Strucutre](https://github.com/neilbirtles/WaterAutoTurret/tree/main/BoMandEBS.xlsx)
 
 ### 3D Models
 
